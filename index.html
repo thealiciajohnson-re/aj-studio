@@ -399,6 +399,7 @@
         body:JSON.stringify(row)}); ok=res.ok; }catch(err){ ok=false; }
     if(!ok){ btn.disabled=false; btn.textContent="Review & pay \u2192";
       alert("Sorry \u2014 that didn\u2019t go through. Please text me at 707-849-6775 and I\u2019ll take your order directly."); return; }
+    fetch(SUPA_URL+"/functions/v1/order-notify",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({record:row})}).catch(function(){});
     const note=encodeURIComponent("Listing media \u2014 "+fd.get("address")+" \u2014 "+fd.get("package"));
     document.getElementById("payCash").href="https://cash.app/$"+CASHTAG+"/"+total;
     document.getElementById("payCash").textContent="Pay $"+total+" with Cash App";
