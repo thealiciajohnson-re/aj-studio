@@ -187,6 +187,8 @@
   .of .opt input{width:17px;height:17px;accent-color:var(--primary)}
   .of button{background:var(--primary);color:#fff;font-weight:700;font-size:16px;border:0;border-radius:10px;padding:15px;cursor:pointer}
   .of button:disabled{opacity:.6}
+  .total-row{display:flex;justify-content:space-between;align-items:baseline;font-weight:700;font-size:16px;padding:12px 2px 2px;border-top:1px solid var(--line)}
+  .total-row #totalAmt{font-size:26px;color:var(--primary);font-variant-numeric:tabular-nums}
   .thanks{text-align:center;padding:8px 0}
   .thanks h3{font-size:24px;margin:0 0 8px} .thanks p{color:var(--muted);max-width:46ch;margin:0 auto 8px}
   .paybtns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:20px 0 6px}
@@ -354,6 +356,7 @@
         <div><label>Needed by</label><input name="needed_by" type="date"></div>
       </div>
       <div><label>Anything else?</label><textarea name="notes"></textarea></div>
+      <div class="total-row"><span>Total</span><span id="totalAmt">$0</span></div>
       <label class="opt" style="margin-top:2px"><input type="checkbox" id="agree" required> I understand <b>payment is due upfront</b> and <b>all sales are final — no refunds</b>.</label>
       <button type="submit" id="orderBtn">Review &amp; pay →</button>
     </form>
@@ -372,26 +375,30 @@
   <p class="foot">Sonoma Listing Studio · Alicia Johnson, Excellerate Real Estate · Payment due upfront · all sales final · Prices intro rates, subject to change</p>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
   const SUPA_URL="https://mdlonovzxkpcahopwvac.supabase.co", SUPA_ANON="sb_publishable_eDBryBuAuIAR71DHilWmiA_h1CP1nx2";
   const CASHTAG="thealiciajohnson", VENMO="thealiciajohnson";
   const PRICES={"Words + Social \u2014 $149":149,"The Listing Launch \u2014 $299":299,"Full Media Package \u2014 $449":449};
   const ADDS={"Rush 24h":50,"Extra 3 posts":40,"Beat-synced sound":25,"9:16 + 16:9":35};
-  const db=supabase.createClient(SUPA_URL,SUPA_ANON);
   const form=document.getElementById("orderForm"), btn=document.getElementById("orderBtn");
+  function calcTotal(){ const fd=new FormData(form); return (PRICES[fd.get("package")]||0)+fd.getAll("addons").reduce((s,a)=>s+(ADDS[a]||0),0); }
+  function updateTotal(){ document.getElementById("totalAmt").textContent="$"+calcTotal(); }
+  form.addEventListener("change", updateTotal); updateTotal();
   form.addEventListener("submit", async function(e){
     e.preventDefault(); btn.disabled=true; btn.textContent="Sending\u2026";
     const fd=new FormData(form);
     const addons=fd.getAll("addons");
-    const total=(PRICES[fd.get("package")]||0)+addons.reduce((s,a)=>s+(ADDS[a]||0),0);
+    const total=calcTotal();
     const row={name:fd.get("name"),brokerage:fd.get("brokerage"),phone:fd.get("phone"),email:fd.get("email"),
       address:fd.get("address"),package:fd.get("package"),addons:addons.join(", "),list_price:fd.get("list_price"),
       specs:fd.get("specs"),features:fd.get("features"),photos:fd.get("photos"),needed_by:fd.get("needed_by"),
       notes:fd.get("notes"),amount:total,source:"studio site"};
-    const {error}=await db.from("studio_orders").insert(row);
-    if(error){ btn.disabled=false; btn.textContent="Review & pay \u2192";
-      alert("Sorry \u2014 that didn\u2019t go through. Please text me at 707-849-6775. ("+error.message+")"); return; }
+    let ok=false;
+    try{ const res=await fetch(SUPA_URL+"/rest/v1/studio_orders",{method:"POST",
+        headers:{"apikey":SUPA_ANON,"Authorization":"Bearer "+SUPA_ANON,"Content-Type":"application/json","Prefer":"return=minimal"},
+        body:JSON.stringify(row)}); ok=res.ok; }catch(err){ ok=false; }
+    if(!ok){ btn.disabled=false; btn.textContent="Review & pay \u2192";
+      alert("Sorry \u2014 that didn\u2019t go through. Please text me at 707-849-6775 and I\u2019ll take your order directly."); return; }
     const note=encodeURIComponent("Listing media \u2014 "+fd.get("address")+" \u2014 "+fd.get("package"));
     document.getElementById("payCash").href="https://cash.app/$"+CASHTAG+"/"+total;
     document.getElementById("payCash").textContent="Pay $"+total+" with Cash App";
