@@ -193,6 +193,13 @@
   .paybtns a{display:inline-block;text-decoration:none;font-weight:700;padding:13px 22px;border-radius:10px;font-size:15px}
   .pay-cash{background:#00d54b;color:#03340f} .pay-venmo{background:#008cff;color:#fff}
   .hp{position:absolute;left:-9999px}
+  .webserv{margin-top:clamp(28px,4vw,44px)}
+  .webserv-card{background:var(--acS);border:1px solid var(--primary);border-radius:16px;padding:clamp(22px,3.5vw,32px);display:flex;gap:24px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+  .webserv-card h2{font-size:clamp(20px,3vw,26px);margin:4px 0 8px;font-weight:600}
+  .webserv-card p{margin:0 0 6px;max-width:52ch;color:var(--ink)}
+  .webserv-eg{font-size:14px;color:var(--muted)} .webserv-eg a{color:var(--primary);font-weight:600}
+  .webserv-price{text-align:center;min-width:170px}
+  .webserv-price .from{font-size:13px;color:var(--muted)} .webserv-price .amt{font-size:34px;font-weight:700;line-height:1;margin-bottom:12px}
 </style>
 
 </head>
@@ -268,6 +275,21 @@
     </article>
   </section>
 
+  <section class="webserv">
+    <div class="webserv-card">
+      <div>
+        <p class="eyebrow">Also available</p>
+        <h2 class="serif">Realtor &amp; Listing Websites</h2>
+        <p>A custom, lead-capturing website built around your brand — home-value capture, listings, mobile-ready — <b>including ongoing maintenance &amp; updates</b>. The kind of site that turns clicks into clients.</p>
+        <p class="webserv-eg">Live example → <a href="https://thealiciajohnsonhomes.com" target="_blank" rel="noopener">thealiciajohnsonhomes.com</a></p>
+      </div>
+      <div class="webserv-price">
+        <div class="amt">$1,499</div>
+        <div class="from">includes maintenance</div>
+        <a class="btn solid" href="#book">Book a consult</a>
+      </div>
+    </div>
+  </section>
   <section class="split">
     <div class="block">
       <h2>Add-ons</h2>
@@ -297,7 +319,7 @@
 
   <section id="book" class="order-wrap">
     <h2 class="serif">Order your listing package</h2>
-    <p class="oi">Fill this out, then pay in seconds with Cash App or Venmo. I'll confirm your order and get started within a few hours.</p>
+    <p class="oi">Fill this out and pay upfront — I start as soon as payment lands. <b>All sales are final · no refunds.</b></p>
     <form id="orderForm" class="of">
       <div class="row">
         <div><label>Your name *</label><input name="name" required></div>
@@ -332,6 +354,7 @@
         <div><label>Needed by</label><input name="needed_by" type="date"></div>
       </div>
       <div><label>Anything else?</label><textarea name="notes"></textarea></div>
+      <label class="opt" style="margin-top:2px"><input type="checkbox" id="agree" required> I understand <b>payment is due upfront</b> and <b>all sales are final — no refunds</b>.</label>
       <button type="submit" id="orderBtn">Review &amp; pay →</button>
     </form>
     <div id="orderThanks" class="thanks" style="display:none">
@@ -341,12 +364,12 @@
         <a id="payCash" class="pay-cash" target="_blank" rel="noopener">Pay with Cash App</a>
         <a id="payVenmo" class="pay-venmo" target="_blank" rel="noopener">Pay with Venmo</a>
       </div>
-      <p style="font-size:13px">First listing? Mention it and I'll credit you $25. Questions? Text 707-849-6775.</p>
+      <p style="font-size:13px">Payment is due now to begin — all sales final. Questions? Text 707-849-6775.</p>
     </div>
     <p style="text-align:center;color:var(--muted);font-size:13px;margin-top:16px">Prefer to just text? 📱 707-849-6775 · ✉️ alicialjohnson23@gmail.com</p>
   </section>
 
-  <p class="foot">Sonoma Listing Studio · Alicia Johnson, Excellerate Real Estate · Payment due on delivery · Prices intro rates, subject to change</p>
+  <p class="foot">Sonoma Listing Studio · Alicia Johnson, Excellerate Real Estate · Payment due upfront · all sales final · Prices intro rates, subject to change</p>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -374,7 +397,7 @@
     document.getElementById("payCash").textContent="Pay $"+total+" with Cash App";
     document.getElementById("payVenmo").href="https://venmo.com/u/"+VENMO+"?txn=pay&amount="+total+"&note="+note;
     document.getElementById("payVenmo").textContent="Pay $"+total+" with Venmo";
-    document.getElementById("thanksLine").textContent="Thanks "+fd.get("name")+"! Your "+fd.get("package").split(" \u2014 ")[0]+" for "+fd.get("address")+" is in. Send payment to lock it in:";
+    document.getElementById("thanksLine").textContent="Thanks "+fd.get("name")+"! Your "+fd.get("package").split(" \u2014 ")[0]+" for "+fd.get("address")+" is in. Payment is due now to begin \u2014 all sales final:";
     form.style.display="none"; document.getElementById("orderThanks").style.display="block";
     document.getElementById("orderThanks").scrollIntoView({behavior:"smooth"});
   });
