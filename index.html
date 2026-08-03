@@ -234,7 +234,7 @@
     <article class="card">
       <h3>Words + Social</h3>
       <p class="desc">Your listing, written and ready to post.</p>
-      <div class="price"><span class="cur">$</span><span class="amt">149</span></div>
+      <div class="price"><span class="cur">$</span><span class="amt">100</span></div>
       <p class="price-note">per listing</p>
       <ul class="feat">
         <li>Full MLS description — long &amp; short</li>
@@ -250,7 +250,7 @@
       <span class="tag">Most popular</span>
       <h3>The Listing Launch</h3>
       <p class="desc">The scroll-stopping reel — done for you.</p>
-      <div class="price"><span class="cur">$</span><span class="amt">299</span></div>
+      <div class="price"><span class="cur">$</span><span class="amt">199</span></div>
       <p class="price-note">per listing</p>
       <ul class="feat">
         <li>Everything in Words + Social</li>
@@ -266,7 +266,7 @@
     <article class="card">
       <h3>Full Media Package</h3>
       <p class="desc">Your whole launch, everywhere.</p>
-      <div class="price"><span class="cur">$</span><span class="amt">449</span></div>
+      <div class="price"><span class="cur">$</span><span class="amt">349</span></div>
       <p class="price-note">per listing</p>
       <ul class="feat">
         <li>Everything in The Listing Launch</li>
@@ -342,9 +342,9 @@
       <div><label>Package *</label>
         <select name="package" required>
           <option value="">Choose one…</option>
-          <option>Words + Social — $149</option>
-          <option>The Listing Launch — $299</option>
-          <option>Full Media Package — $449</option>
+          <option>Words + Social — $100</option>
+          <option>The Listing Launch — $199</option>
+          <option>Full Media Package — $349</option>
         </select>
       </div>
       <fieldset><legend>Add-ons (optional)</legend>
@@ -385,7 +385,7 @@
 <script>
   const SUPA_URL="https://mdlonovzxkpcahopwvac.supabase.co", SUPA_ANON="sb_publishable_eDBryBuAuIAR71DHilWmiA_h1CP1nx2";
   const CASHTAG="thealiciajohnson", VENMO="thealiciajohnson";
-  const PRICES={"Words + Social \u2014 $149":149,"The Listing Launch \u2014 $299":299,"Full Media Package \u2014 $449":449};
+  const PRICES={"Words + Social \u2014 $100":100,"The Listing Launch \u2014 $199":199,"Full Media Package \u2014 $349":349};
   const ADDS={"Rush 24h":50,"Extra 3 posts":40,"Beat-synced sound":25,"9:16 + 16:9":35};
   const form=document.getElementById("orderForm"), btn=document.getElementById("orderBtn");
   function calcTotal(){ const fd=new FormData(form); return (PRICES[fd.get("package")]||0)+fd.getAll("addons").reduce((s,a)=>s+(ADDS[a]||0),0); }
