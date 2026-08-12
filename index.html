@@ -215,7 +215,7 @@
       <h1 class="serif">AJ Studio</h1>
       <span class="by">by Alicia Johnson</span>
     </div>
-    <p class="lede"><strong>Done-for-you marketing material &amp; websites.</strong> I create the videos, branded social posts, and written content that make your business stand out — and build the websites to match. For real estate, small business, or any brand. Marketing pieces back in <strong>48 hours</strong>, ready to post.</p>
+    <p class="lede"><strong>Marketing material &amp; websites, made for your business.</strong> The videos, social posts, and copy that make you stand out — plus a custom website to match. Real estate, small business, or any brand.</p>
   </header>
 
   <section class="watch">
@@ -232,8 +232,8 @@
   <section class="grid" aria-label="Packages">
     <article class="card">
       <h3>Single Listing or Launch</h3>
-      <p class="desc">Everything to launch one listing or product — done for you.</p>
-      <div class="price"><span class="cur">$</span><span class="amt">100</span></div>
+      <p class="desc">Everything to launch one listing or product.</p>
+      <div class="price"><span class="cur">$</span><span class="amt">99</span></div>
       <p class="price-note">per listing or launch</p>
       <ul class="feat">
         <li>Full written description — long &amp; short</li>
@@ -242,38 +242,38 @@
         <li>Optimized hashtags, ready to post</li>
       </ul>
       <p class="turn">Turnaround <b>48 hours</b></p>
-      <a class="btn" href="#book">Text to book</a>
+      <a class="btn" href="#book" data-pkg="Single Listing or Launch — $99">Order &amp; pay</a>
     </article>
 
-    <article class="card">
-      <h3>Social Media — By the Hour</h3>
-      <p class="desc">Ad-hoc content help, whenever you need it.</p>
-      <div class="price"><span class="cur">$</span><span class="amt">15</span></div>
-      <p class="price-note">per hour</p>
+        <article class="card">
+      <h3>Social Posts</h3>
+      <p class="desc">3 single-image posts a week to keep you active.</p>
+      <div class="price"><span class="cur">$</span><span class="amt">100</span></div>
+      <p class="price-note">per month</p>
       <ul class="feat">
-        <li>Pay only for the hours you use</li>
-        <li>Posts, captions, edits &amp; scheduling</li>
-        <li>Great for a one-off push or busy week</li>
-        <li>No monthly commitment</li>
+        <li><b>3</b> single-picture posts a week + captions</li>
+        <li>Branded to your look, ready to post</li>
+        <li>Scheduled &amp; posted for you</li>
+        <li>No reels or video</li>
       </ul>
-      <p class="turn">Booked <b>by the hour</b></p>
-      <a class="btn" href="#book">Text to book</a>
+      <p class="turn">Ongoing · <b>cancel anytime</b></p>
+      <a class="btn" href="#book" data-pkg="Social Posts — $100/month">Order &amp; pay</a>
     </article>
 
     <article class="card featured">
       <span class="tag">Most popular</span>
       <h3>Full Social Media</h3>
-      <p class="desc">Your whole social presence — done for you, every month.</p>
+      <p class="desc">Your whole social presence, handled every month.</p>
       <div class="price"><span class="cur">$</span><span class="amt">500</span></div>
       <p class="price-note">per month</p>
       <ul class="feat">
-        <li>Done-for-you monthly content plan</li>
+        <li>A full monthly content plan</li>
         <li>Branded posts, captions &amp; short reels</li>
         <li>Consistent posting, on-brand &amp; scheduled</li>
         <li>Ongoing · cancel anytime</li>
       </ul>
-      <p class="turn">Best value <b>vs. hourly</b></p>
-      <a class="btn solid" href="#book">Text to book</a>
+      <p class="turn">Best value <b>· with reels</b></p>
+      <a class="btn solid" href="#book" data-pkg="Full Social Media — $500/month">Order &amp; pay</a>
     </article>
   </section>
 
@@ -289,7 +289,7 @@
       <div class="webserv-price">
         <div class="amt">$500</div>
         <div class="from">+ $300/quarter maintenance</div>
-        <a class="btn solid" href="#book">Book a consult</a>
+        <a class="btn solid" href="#book" data-pkg="Custom Websites — $500 build">Order &amp; pay</a>
       </div>
     </div>
   </section>
@@ -325,23 +325,25 @@
     <a class="btn solid" href="https://ajohnsonstudio.etsy.com" target="_blank" rel="noopener">Shop AJ Studio on Etsy →</a>
   </section>
   <section id="book" class="order-wrap">
-    <h2 class="serif">Order your listing package</h2>
+    <h2 class="serif">Place your order</h2>
     <p class="oi">Fill this out and pay upfront — I start as soon as payment lands. <b>All sales are final · no refunds.</b></p>
     <form id="orderForm" class="of">
       <div class="row">
         <div><label>Your name *</label><input name="name" required></div>
-        <div><label>Brokerage</label><input name="brokerage"></div>
+        <div><label>Business / brokerage</label><input name="brokerage"></div>
       </div>
       <div class="row">
         <div><label>Phone *</label><input name="phone" type="tel" required></div>
         <div><label>Email *</label><input name="email" type="email" required></div>
       </div>
-      <div><label>Property address (or business name) *</label><input name="address" required></div>
+      <div><label>Your business / what you're marketing *</label><input name="address" required placeholder="business, listing, product, service, or event"></div>
       <div><label>Package *</label>
         <select name="package" required>
           <option value="">Choose one…</option>
-          <option>Single Listing or Launch — $100</option>
+          <option>Single Listing or Launch — $99</option>
+          <option>Social Posts — $100/month</option>
           <option>Full Social Media — $500/month</option>
+          <option>Custom Websites — $500 build</option>
         </select>
       </div>
       <fieldset><legend>Add-ons (optional)</legend>
@@ -351,12 +353,12 @@
         <label class="opt"><input type="checkbox" name="addons" value="9:16 + 16:9"> Both 9:16 + 16:9 cuts (+$35)</label>
       </fieldset>
       <div class="row">
-        <div><label>List price</label><input name="list_price" placeholder="$"></div>
-        <div><label>Beds / baths / sqft</label><input name="specs" placeholder="5 / 4 / 3,244"></div>
+        <div><label>What are we marketing?</label><input name="specs" placeholder="listing, product, service, event…"></div>
+        <div><label>Budget or price <span style="color:var(--muted);font-weight:400">(optional)</span></label><input name="list_price" placeholder="$"></div>
       </div>
-      <div><label>Top features to highlight</label><textarea name="features"></textarea></div>
+      <div><label>What should we highlight? <span style="color:var(--muted);font-weight:400">(features, offers, your story)</span></label><textarea name="features"></textarea></div>
       <div class="row">
-        <div><label>Photos link (Dropbox / Drive)</label><input name="photos"></div>
+        <div><label>Photos / assets link <span style="color:var(--muted);font-weight:400">(Dropbox / Drive)</span></label><input name="photos"></div>
         <div><label>Needed by</label><input name="needed_by" type="date"></div>
       </div>
       <div><label>Anything else?</label><textarea name="notes"></textarea></div>
@@ -382,12 +384,13 @@
 <script>
   const SUPA_URL="https://mdlonovzxkpcahopwvac.supabase.co", SUPA_ANON="sb_publishable_eDBryBuAuIAR71DHilWmiA_h1CP1nx2";
   const CASHTAG="thealiciajohnson", VENMO="thealiciajohnson";
-  const PRICES={"Single Listing or Launch — $100":100,"Full Social Media — $500/month":500};
+  const PRICES={"Single Listing or Launch — $99":99,"Social Posts — $100/month":100,"Full Social Media — $500/month":500,"Custom Websites — $500 build":500};
   const ADDS={"Rush 24h":50,"Extra 3 posts":40,"Beat-synced sound":25,"9:16 + 16:9":35};
   const form=document.getElementById("orderForm"), btn=document.getElementById("orderBtn");
   function calcTotal(){ const fd=new FormData(form); return (PRICES[fd.get("package")]||0)+fd.getAll("addons").reduce((s,a)=>s+(ADDS[a]||0),0); }
   function updateTotal(){ document.getElementById("totalAmt").textContent="$"+calcTotal(); }
   form.addEventListener("change", updateTotal); updateTotal();
+  document.querySelectorAll('a.btn[data-pkg]').forEach(function(a){ a.addEventListener("click",function(){ form.package.value=this.getAttribute("data-pkg"); updateTotal(); }); });
   form.addEventListener("submit", async function(e){
     e.preventDefault(); btn.disabled=true; btn.textContent="Sending\u2026";
     const fd=new FormData(form);
@@ -404,7 +407,7 @@
     if(!ok){ btn.disabled=false; btn.textContent="Review & pay \u2192";
       alert("Sorry \u2014 that didn\u2019t go through. Please text me at 707-849-6775 and I\u2019ll take your order directly."); return; }
     fetch(SUPA_URL+"/functions/v1/order-notify",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({record:row})}).catch(function(){});
-    const note=encodeURIComponent("Listing media \u2014 "+fd.get("address")+" \u2014 "+fd.get("package"));
+    const note=encodeURIComponent("AJ Studio \u2014 "+fd.get("address")+" \u2014 "+fd.get("package"));
     document.getElementById("payCash").href="https://cash.app/$"+CASHTAG+"/"+total;
     document.getElementById("payCash").textContent="Pay $"+total+" with Cash App";
     document.getElementById("payVenmo").href="https://venmo.com/u/"+VENMO+"?txn=pay&amount="+total+"&note="+note;
