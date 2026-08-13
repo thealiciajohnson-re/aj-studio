@@ -230,51 +230,71 @@
 
 
   <section class="grid" aria-label="Packages">
+    <!-- Create -->
     <article class="card">
-      <h3>Single Listing or Launch</h3>
-      <p class="desc">Everything to launch one listing or product.</p>
-      <div class="price"><span class="cur">$</span><span class="amt">99</span></div>
-      <p class="price-note">per listing or launch</p>
-      <ul class="feat">
-        <li>Full written description — long &amp; short</li>
-        <li>3 branded social posts + captions</li>
-        <li>Produced social <b>Reel</b> — hook, callouts &amp; price reveal</li>
-        <li>Optimized hashtags, ready to post</li>
-      </ul>
-      <p class="turn">Turnaround <b>48 hours</b></p>
-      <a class="btn" href="#book" data-pkg="Single Listing or Launch — $99">Order &amp; pay</a>
-    </article>
-
-        <article class="card">
-      <h3>Social Posts</h3>
-      <p class="desc">3 single-image posts a week to keep you active.</p>
-      <div class="price"><span class="cur">$</span><span class="amt">100</span></div>
+      <h3>Create</h3>
+      <p class="desc">Consistent branded content, handled for you.</p>
+      <div class="price"><span class="cur">$</span><span class="amt">59</span></div>
       <p class="price-note">per month</p>
       <ul class="feat">
-        <li><b>3</b> single-picture posts a week + captions</li>
-        <li>Branded to your look, ready to post</li>
-        <li>Scheduled &amp; posted for you</li>
-        <li>No reels or video</li>
+        <li>3 branded posts a week + captions</li>
+        <li>Monthly content calendar</li>
+        <li>Posted to Instagram for you</li>
+        <li>Content built around your business</li>
       </ul>
       <p class="turn">Ongoing · <b>cancel anytime</b></p>
-      <a class="btn" href="#book" data-pkg="Social Posts — $100/month">Order &amp; pay</a>
+      <a class="btn" href="#book" data-pkg="Create — $59/month">Order &amp; pay</a>
     </article>
 
+    <!-- Automate (featured) -->
     <article class="card featured">
       <span class="tag">Most popular</span>
-      <h3>Full Social Media</h3>
-      <p class="desc">Your whole social presence, handled every month.</p>
-      <div class="price"><span class="cur">$</span><span class="amt">500</span></div>
+      <h3>Automate</h3>
+      <p class="desc">More reach — Reels, carousels &amp; auto-posting.</p>
+      <div class="price"><span class="cur">$</span><span class="amt">99</span></div>
       <p class="price-note">per month</p>
       <ul class="feat">
-        <li>A full monthly content plan</li>
-        <li>Branded posts, captions &amp; short reels</li>
-        <li>Consistent posting, on-brand &amp; scheduled</li>
-        <li>Ongoing · cancel anytime</li>
+        <li>Everything in Create</li>
+        <li>4 posts a week — <b>Reels</b> + carousels + posts</li>
+        <li>Auto-published to Instagram + Facebook</li>
+        <li>Scheduled &amp; posted for you</li>
       </ul>
-      <p class="turn">Best value <b>· with reels</b></p>
-      <a class="btn solid" href="#book" data-pkg="Full Social Media — $500/month">Order &amp; pay</a>
+      <p class="turn">Ongoing · <b>cancel anytime</b></p>
+      <a class="btn solid" href="#book" data-pkg="Automate — $99/month">Order &amp; pay</a>
     </article>
+
+    <!-- Grow -->
+    <article class="card">
+      <h3>Grow</h3>
+      <p class="desc">Full presence — content plus email marketing.</p>
+      <div class="price"><span class="cur">$</span><span class="amt">149</span></div>
+      <p class="price-note">per month</p>
+      <ul class="feat">
+        <li>Everything in Automate</li>
+        <li>Daily posting (5–6/week) + Reels</li>
+        <li>Monthly email campaign to your list</li>
+        <li>Performance check-in each month</li>
+      </ul>
+      <p class="turn">Ongoing · <b>cancel anytime</b></p>
+      <a class="btn" href="#book" data-pkg="Grow — $149/month">Order &amp; pay</a>
+    </article>
+  </section>
+
+  <p style="text-align:center;color:var(--muted);font-size:14px;margin:22px auto 0;max-width:60ch">💡 Prefer to pay yearly? <b>Get 2 months free</b> — just ask when you order.</p>
+
+  <section class="webserv">
+    <div class="webserv-card">
+      <div>
+        <p class="eyebrow">One-time · not monthly</p>
+        <h2 class="serif">Single Listing or Launch</h2>
+        <p>Launching one listing or product? Full written description, 3 branded social posts, and a produced reel — a complete one-time package, delivered in 48 hours.</p>
+      </div>
+      <div class="webserv-price">
+        <div class="amt">$99</div>
+        <div class="from">one-time</div>
+        <a class="btn solid" href="#book" data-pkg="Single Listing or Launch — $99">Order &amp; pay</a>
+      </div>
+    </div>
   </section>
 
   <section class="webserv">
@@ -340,9 +360,10 @@
       <div><label>Package *</label>
         <select name="package" required>
           <option value="">Choose one…</option>
+          <option>Create — $59/month</option>
+          <option>Automate — $99/month</option>
+          <option>Grow — $149/month</option>
           <option>Single Listing or Launch — $99</option>
-          <option>Social Posts — $100/month</option>
-          <option>Full Social Media — $500/month</option>
           <option>Custom Websites — $500 build</option>
         </select>
       </div>
@@ -384,7 +405,7 @@
 <script>
   const SUPA_URL="https://mdlonovzxkpcahopwvac.supabase.co", SUPA_ANON="sb_publishable_eDBryBuAuIAR71DHilWmiA_h1CP1nx2";
   const CASHTAG="thealiciajohnson", VENMO="thealiciajohnson";
-  const PRICES={"Single Listing or Launch — $99":99,"Social Posts — $100/month":100,"Full Social Media — $500/month":500,"Custom Websites — $500 build":500};
+  const PRICES={"Create — $59/month":59,"Automate — $99/month":99,"Grow — $149/month":149,"Single Listing or Launch — $99":99,"Custom Websites — $500 build":500};
   const ADDS={"Rush 24h":50,"Extra 3 posts":40,"Beat-synced sound":25,"9:16 + 16:9":35};
   const form=document.getElementById("orderForm"), btn=document.getElementById("orderBtn");
   function calcTotal(){ const fd=new FormData(form); return (PRICES[fd.get("package")]||0)+fd.getAll("addons").reduce((s,a)=>s+(ADDS[a]||0),0); }
