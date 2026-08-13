@@ -285,21 +285,6 @@
   <section class="webserv">
     <div class="webserv-card">
       <div>
-        <p class="eyebrow">One-time · not monthly</p>
-        <h2 class="serif">Single Listing or Launch</h2>
-        <p>Launching one listing or product? Full written description, 3 branded social posts, and a produced reel — a complete one-time package, delivered in 48 hours.</p>
-      </div>
-      <div class="webserv-price">
-        <div class="amt">$99</div>
-        <div class="from">one-time</div>
-        <a class="btn solid" href="#book" data-pkg="Single Listing or Launch — $99">Order &amp; pay</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="webserv">
-    <div class="webserv-card">
-      <div>
         <p class="eyebrow">Also available · for any business</p>
         <h2 class="serif">Custom Websites</h2>
         <p>Need a website? I build custom, mobile-ready sites for <b>any business</b> — realtors, shops, service pros, side hustles — with a lead form. <b>$500 to build</b> + optional <b>$300/quarter maintenance</b> (unlimited updates, hosting &amp; fixes). No monthly platform fees.</p>
@@ -363,7 +348,6 @@
           <option>Create — $59/month</option>
           <option>Automate — $99/month</option>
           <option>Grow — $149/month</option>
-          <option>Single Listing or Launch — $99</option>
           <option>Custom Websites — $500 build</option>
         </select>
       </div>
@@ -405,7 +389,7 @@
 <script>
   const SUPA_URL="https://mdlonovzxkpcahopwvac.supabase.co", SUPA_ANON="sb_publishable_eDBryBuAuIAR71DHilWmiA_h1CP1nx2";
   const CASHTAG="thealiciajohnson", VENMO="thealiciajohnson";
-  const PRICES={"Create — $59/month":59,"Automate — $99/month":99,"Grow — $149/month":149,"Single Listing or Launch — $99":99,"Custom Websites — $500 build":500};
+  const PRICES={"Create — $59/month":59,"Automate — $99/month":99,"Grow — $149/month":149,"Custom Websites — $500 build":500};
   const ADDS={"Rush 24h":50,"Extra 3 posts":40,"Beat-synced sound":25,"9:16 + 16:9":35};
   const form=document.getElementById("orderForm"), btn=document.getElementById("orderBtn");
   function calcTotal(){ const fd=new FormData(form); return (PRICES[fd.get("package")]||0)+fd.getAll("addons").reduce((s,a)=>s+(ADDS[a]||0),0); }
