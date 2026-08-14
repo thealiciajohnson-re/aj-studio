@@ -298,6 +298,23 @@
       </div>
     </div>
   </section>
+  <section class="webserv" aria-label="Done-for-You CRM">
+    <div class="webserv-card">
+      <div>
+        <p class="eyebrow">For real estate agents</p>
+        <h2 class="serif">Done-for-You CRM</h2>
+        <p>Your own private real-estate CRM, built and connected to your accounts — your leads imported, your branding, 8 follow-up plans, and a 30-minute training call. Live in about a week, zero tech headaches.</p>
+        <p class="webserv-eg"><b>Add automation (+$500)</b> and it runs itself — MLS neighborhood alerts, foreclosure &amp; expired auto-capture, monthly home-value emails, and a daily "who to call."</p>
+        <p class="webserv-eg">You bring your own MLS/data memberships — it runs on your access, fully yours.</p>
+      </div>
+      <div class="webserv-price">
+        <div class="amt">$497</div>
+        <div class="from">one-time · +$500 automation</div>
+        <a class="btn solid" href="#book" data-pkg="Done-for-You CRM — $497">Order &amp; pay</a>
+      </div>
+    </div>
+    <video controls preload="metadata" playsinline src="crm-demo.mp4" style="width:100%;max-width:680px;display:block;margin:18px auto 0;border-radius:14px;box-shadow:var(--shadow)"></video>
+  </section>
   <section class="split">
     <div class="block">
       <h2>Add-ons</h2>
@@ -349,6 +366,7 @@
           <option>Automate — $99/month</option>
           <option>Grow — $149/month</option>
           <option>Custom Websites — $500 build</option>
+          <option>Done-for-You CRM — $497</option>
         </select>
       </div>
       <fieldset><legend>Add-ons (optional)</legend>
@@ -356,6 +374,7 @@
         <label class="opt"><input type="checkbox" name="addons" value="Extra 3 posts"> 3 extra social posts (+$40)</label>
         <label class="opt"><input type="checkbox" name="addons" value="Beat-synced sound"> Reel beat-synced to your sound (+$25)</label>
         <label class="opt"><input type="checkbox" name="addons" value="9:16 + 16:9"> Both 9:16 + 16:9 cuts (+$35)</label>
+        <label class="opt"><input type="checkbox" name="addons" value="CRM Automation"> Add CRM automation — hands-free lead machine (+$500)</label>
       </fieldset>
       <div class="row">
         <div><label>What are we marketing?</label><input name="specs" placeholder="listing, product, service, event…"></div>
@@ -389,8 +408,8 @@
 <script>
   const SUPA_URL="https://mdlonovzxkpcahopwvac.supabase.co", SUPA_ANON="sb_publishable_eDBryBuAuIAR71DHilWmiA_h1CP1nx2";
   const CASHTAG="thealiciajohnson", VENMO="thealiciajohnson";
-  const PRICES={"Create — $59/month":59,"Automate — $99/month":99,"Grow — $149/month":149,"Custom Websites — $500 build":500};
-  const ADDS={"Rush 24h":50,"Extra 3 posts":40,"Beat-synced sound":25,"9:16 + 16:9":35};
+  const PRICES={"Create — $59/month":59,"Automate — $99/month":99,"Grow — $149/month":149,"Custom Websites — $500 build":500,"Done-for-You CRM — $497":497};
+  const ADDS={"Rush 24h":50,"Extra 3 posts":40,"Beat-synced sound":25,"9:16 + 16:9":35,"CRM Automation":500};
   const form=document.getElementById("orderForm"), btn=document.getElementById("orderBtn");
   function calcTotal(){ const fd=new FormData(form); return (PRICES[fd.get("package")]||0)+fd.getAll("addons").reduce((s,a)=>s+(ADDS[a]||0),0); }
   function updateTotal(){ document.getElementById("totalAmt").textContent="$"+calcTotal(); }
