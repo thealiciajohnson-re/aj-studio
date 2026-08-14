@@ -369,13 +369,36 @@
           <option>Done-for-You CRM — $497</option>
         </select>
       </div>
-      <fieldset><legend>Add-ons (optional)</legend>
-        <label class="opt"><input type="checkbox" name="addons" value="Rush 24h"> Rush 24-hour delivery (+$50)</label>
-        <label class="opt"><input type="checkbox" name="addons" value="Extra 3 posts"> 3 extra social posts (+$40)</label>
-        <label class="opt"><input type="checkbox" name="addons" value="Beat-synced sound"> Reel beat-synced to your sound (+$25)</label>
-        <label class="opt"><input type="checkbox" name="addons" value="9:16 + 16:9"> Both 9:16 + 16:9 cuts (+$35)</label>
-        <label class="opt"><input type="checkbox" name="addons" value="CRM Automation"> Add CRM automation — hands-free lead machine (+$500)</label>
+      <fieldset id="addonsBox"><legend>Add-ons (optional)</legend>
+        <label class="opt" data-for="Create — $59/month|Automate — $99/month|Grow — $149/month"><input type="checkbox" name="addons" value="Rush 24h"> Rush 24-hour delivery (+$50)</label>
+        <label class="opt" data-for="Create — $59/month|Automate — $99/month|Grow — $149/month"><input type="checkbox" name="addons" value="Extra 3 posts"> 3 extra social posts (+$40)</label>
+        <label class="opt" data-for="Automate — $99/month|Grow — $149/month"><input type="checkbox" name="addons" value="Beat-synced sound"> Reel beat-synced to your sound (+$25)</label>
+        <label class="opt" data-for="Automate — $99/month|Grow — $149/month"><input type="checkbox" name="addons" value="9:16 + 16:9"> Both 9:16 + 16:9 cuts (+$35)</label>
+        <label class="opt" data-for="Done-for-You CRM — $497"><input type="checkbox" name="addons" value="CRM Automation"> Add automation — hands-free lead machine, runs itself (+$500)</label>
       </fieldset>
+      <div id="crmCompare" style="display:none;margin:2px 0 6px;border:1px solid var(--line);border-radius:12px;overflow:hidden">
+        <div style="background:var(--primary-soft);color:var(--primary);font-weight:600;font-size:13px;padding:10px 14px">Core vs. Core + Automation — what the +$500 adds</div>
+        <div style="overflow-x:auto">
+        <table style="width:100%;border-collapse:collapse;font-size:13.5px">
+          <thead><tr style="color:var(--muted)">
+            <th style="text-align:left;padding:9px 12px;font-weight:600">What you get</th>
+            <th style="padding:9px 10px;font-weight:600;white-space:nowrap">Core<br>$497</th>
+            <th style="padding:9px 12px;font-weight:600;white-space:nowrap;color:var(--primary)">+ Automation<br>$997</th>
+          </tr></thead>
+          <tbody>
+          <tr><td style="padding:8px 12px;border-top:1px solid var(--line)">Private CRM, cloud &amp; login</td><td style="text-align:center;border-top:1px solid var(--line)">✓</td><td style="text-align:center;border-top:1px solid var(--line)">✓</td></tr>
+          <tr><td style="padding:8px 12px;border-top:1px solid var(--line)">Your branding + booking link</td><td style="text-align:center;border-top:1px solid var(--line)">✓</td><td style="text-align:center;border-top:1px solid var(--line)">✓</td></tr>
+          <tr><td style="padding:8px 12px;border-top:1px solid var(--line)">Email follow-up system</td><td style="text-align:center;border-top:1px solid var(--line)">✓</td><td style="text-align:center;border-top:1px solid var(--line)">✓</td></tr>
+          <tr><td style="padding:8px 12px;border-top:1px solid var(--line)">Your leads imported</td><td style="text-align:center;border-top:1px solid var(--line)">✓</td><td style="text-align:center;border-top:1px solid var(--line)">✓</td></tr>
+          <tr><td style="padding:8px 12px;border-top:1px solid var(--line)">30-minute training call</td><td style="text-align:center;border-top:1px solid var(--line)">✓</td><td style="text-align:center;border-top:1px solid var(--line)">✓</td></tr>
+          <tr><td style="padding:8px 12px;border-top:1px solid var(--line)">MLS neighborhood alerts</td><td style="text-align:center;border-top:1px solid var(--line);color:var(--muted)">—</td><td style="text-align:center;border-top:1px solid var(--line);color:var(--primary);font-weight:700">✓</td></tr>
+          <tr><td style="padding:8px 12px;border-top:1px solid var(--line)">Foreclosure &amp; expired auto-capture</td><td style="text-align:center;border-top:1px solid var(--line);color:var(--muted)">—</td><td style="text-align:center;border-top:1px solid var(--line);color:var(--primary);font-weight:700">✓</td></tr>
+          <tr><td style="padding:8px 12px;border-top:1px solid var(--line)">Monthly home-value emails</td><td style="text-align:center;border-top:1px solid var(--line);color:var(--muted)">—</td><td style="text-align:center;border-top:1px solid var(--line);color:var(--primary);font-weight:700">✓</td></tr>
+          <tr><td style="padding:8px 12px;border-top:1px solid var(--line)">Daily &ldquo;who to call&rdquo; automation</td><td style="text-align:center;border-top:1px solid var(--line);color:var(--muted)">—</td><td style="text-align:center;border-top:1px solid var(--line);color:var(--primary);font-weight:700">✓</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
       <div class="row">
         <div><label>What are we marketing?</label><input name="specs" placeholder="listing, product, service, event…"></div>
         <div><label>Budget or price <span style="color:var(--muted);font-weight:400">(optional)</span></label><input name="list_price" placeholder="$"></div>
@@ -413,8 +436,9 @@
   const form=document.getElementById("orderForm"), btn=document.getElementById("orderBtn");
   function calcTotal(){ const fd=new FormData(form); return (PRICES[fd.get("package")]||0)+fd.getAll("addons").reduce((s,a)=>s+(ADDS[a]||0),0); }
   function updateTotal(){ document.getElementById("totalAmt").textContent="$"+calcTotal(); }
-  form.addEventListener("change", updateTotal); updateTotal();
-  document.querySelectorAll('a.btn[data-pkg]').forEach(function(a){ a.addEventListener("click",function(){ form.package.value=this.getAttribute("data-pkg"); updateTotal(); }); });
+  function updateAddons(){ var pkg=form.package.value, any=false; document.querySelectorAll('#addonsBox .opt[data-for]').forEach(function(l){ var show=l.getAttribute('data-for').split('|').indexOf(pkg)>=0; l.style.display=show?'':'none'; if(show){any=true;}else{var cb=l.querySelector('input');if(cb){cb.checked=false;}} }); var box=document.getElementById('addonsBox'); if(box){box.style.display=any?'':'none';} var cmp=document.getElementById('crmCompare'); if(cmp){cmp.style.display=(pkg==='Done-for-You CRM — $497')?'':'none';} updateTotal(); }
+  form.addEventListener("change", updateTotal); form.package.addEventListener("change", updateAddons); updateAddons();
+  document.querySelectorAll('a.btn[data-pkg]').forEach(function(a){ a.addEventListener("click",function(){ form.package.value=this.getAttribute("data-pkg"); updateAddons(); }); });
   form.addEventListener("submit", async function(e){
     e.preventDefault(); btn.disabled=true; btn.textContent="Sending\u2026";
     const fd=new FormData(form);
