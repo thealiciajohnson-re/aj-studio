@@ -204,6 +204,9 @@
   .webserv-eg{font-size:14px;color:var(--muted)} .webserv-eg a{color:var(--primary);font-weight:600}
   .webserv-price{text-align:center;min-width:170px}
   .webserv-price .from{font-size:13px;color:var(--muted)} .webserv-price .amt{font-size:34px;font-weight:700;line-height:1;margin-bottom:12px}
+  .billtoggle{display:flex;gap:4px;max-width:440px;margin:0 auto clamp(18px,3vw,26px);background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:4px}
+  .billtoggle .bt{flex:1;border:0;background:transparent;color:var(--muted);font:inherit;font-weight:600;font-size:13.5px;padding:9px 10px;border-radius:999px;cursor:pointer;white-space:nowrap;transition:background .15s,color .15s}
+  .billtoggle .bt.active{background:var(--primary);color:var(--ground)}
 </style>
 
 </head>
@@ -229,9 +232,13 @@
   </section>
 
 
+  <div class="billtoggle" role="group" aria-label="Billing period">
+    <button type="button" class="bt active" data-bill="monthly">Pay monthly</button>
+    <button type="button" class="bt" data-bill="yearly">Pay yearly · 2 months free</button>
+  </div>
   <section class="grid" aria-label="Packages">
     <!-- Create -->
-    <article class="card">
+    <article class="card" data-plan data-m="59" data-y="590">
       <h3>Create</h3>
       <p class="desc">Consistent branded content, handled for you.</p>
       <div class="price"><span class="cur">$</span><span class="amt">59</span></div>
@@ -243,11 +250,11 @@
         <li>Content built around your business</li>
       </ul>
       <p class="turn">Ongoing · <b>cancel anytime</b></p>
-      <a class="btn" href="#book" data-pkg="Create — $59/month">Order &amp; pay</a>
+      <a class="btn" href="#book" data-pkg="Create — $59/month" data-m-pkg="Create — $59/month" data-y-pkg="Create — $590/year">Order &amp; pay</a>
     </article>
 
     <!-- Automate (featured) -->
-    <article class="card featured">
+    <article class="card featured" data-plan data-m="99" data-y="990">
       <span class="tag">Most popular</span>
       <h3>Automate</h3>
       <p class="desc">More reach — Reels, carousels &amp; auto-posting.</p>
@@ -260,11 +267,11 @@
         <li>Scheduled &amp; posted for you</li>
       </ul>
       <p class="turn">Ongoing · <b>cancel anytime</b></p>
-      <a class="btn solid" href="#book" data-pkg="Automate — $99/month">Order &amp; pay</a>
+      <a class="btn solid" href="#book" data-pkg="Automate — $99/month" data-m-pkg="Automate — $99/month" data-y-pkg="Automate — $990/year">Order &amp; pay</a>
     </article>
 
     <!-- Grow -->
-    <article class="card">
+    <article class="card" data-plan data-m="149" data-y="1490">
       <h3>Grow</h3>
       <p class="desc">Full presence — content plus email marketing.</p>
       <div class="price"><span class="cur">$</span><span class="amt">149</span></div>
@@ -276,11 +283,9 @@
         <li>Performance check-in each month</li>
       </ul>
       <p class="turn">Ongoing · <b>cancel anytime</b></p>
-      <a class="btn" href="#book" data-pkg="Grow — $149/month">Order &amp; pay</a>
+      <a class="btn" href="#book" data-pkg="Grow — $149/month" data-m-pkg="Grow — $149/month" data-y-pkg="Grow — $1,490/year">Order &amp; pay</a>
     </article>
   </section>
-
-  <p style="text-align:center;color:var(--muted);font-size:14px;margin:22px auto 0;max-width:60ch">💡 Prefer to pay yearly? <b>Get 2 months free</b> — just ask when you order.</p>
 
   <section class="webserv">
     <div class="webserv-card">
@@ -363,17 +368,17 @@
         <select name="package" required>
           <option value="">Choose one…</option>
           <option>Create — $59/month</option>
+          <option>Create — $590/year</option>
           <option>Automate — $99/month</option>
+          <option>Automate — $990/year</option>
           <option>Grow — $149/month</option>
+          <option>Grow — $1,490/year</option>
           <option>Custom Websites — $500 build</option>
           <option>Done-for-You CRM — $497</option>
         </select>
       </div>
       <fieldset id="addonsBox"><legend>Add-ons (optional)</legend>
-        <label class="opt" data-for="Create — $59/month|Automate — $99/month|Grow — $149/month"><input type="checkbox" name="addons" value="Rush 24h"> Rush 24-hour delivery (+$50)</label>
-        <label class="opt" data-for="Create — $59/month|Automate — $99/month|Grow — $149/month"><input type="checkbox" name="addons" value="Extra 3 posts"> 3 extra social posts (+$40)</label>
-        <label class="opt" data-for="Automate — $99/month|Grow — $149/month"><input type="checkbox" name="addons" value="Beat-synced sound"> Reel beat-synced to your sound (+$25)</label>
-        <label class="opt" data-for="Automate — $99/month|Grow — $149/month"><input type="checkbox" name="addons" value="9:16 + 16:9"> Both 9:16 + 16:9 cuts (+$35)</label>
+        <label class="opt" data-for="Create — $59/month|Automate — $99/month|Grow — $149/month|Create — $590/year|Automate — $990/year|Grow — $1,490/year"><input type="checkbox" name="addons" value="Rush 24h"> Rush 24-hour delivery (+$50)</label>
         <label class="opt" data-for="Done-for-You CRM — $497"><input type="checkbox" name="addons" value="CRM Automation"> Add automation — hands-free lead machine, runs itself (+$500)</label>
       </fieldset>
       <div id="crmCompare" style="display:none;margin:2px 0 6px;border:1px solid var(--line);border-radius:12px;overflow:hidden">
@@ -431,14 +436,24 @@
 <script>
   const SUPA_URL="https://mdlonovzxkpcahopwvac.supabase.co", SUPA_ANON="sb_publishable_eDBryBuAuIAR71DHilWmiA_h1CP1nx2";
   const CASHTAG="thealiciajohnson", VENMO="thealiciajohnson";
-  const PRICES={"Create — $59/month":59,"Automate — $99/month":99,"Grow — $149/month":149,"Custom Websites — $500 build":500,"Done-for-You CRM — $497":497};
-  const ADDS={"Rush 24h":50,"Extra 3 posts":40,"Beat-synced sound":25,"9:16 + 16:9":35,"CRM Automation":500};
+  const PRICES={"Create — $59/month":59,"Automate — $99/month":99,"Grow — $149/month":149,"Create — $590/year":590,"Automate — $990/year":990,"Grow — $1,490/year":1490,"Custom Websites — $500 build":500,"Done-for-You CRM — $497":497};
+  const ADDS={"Rush 24h":50,"CRM Automation":500};
   const form=document.getElementById("orderForm"), btn=document.getElementById("orderBtn");
   function calcTotal(){ const fd=new FormData(form); return (PRICES[fd.get("package")]||0)+fd.getAll("addons").reduce((s,a)=>s+(ADDS[a]||0),0); }
   function updateTotal(){ document.getElementById("totalAmt").textContent="$"+calcTotal(); }
   function updateAddons(){ var pkg=form.package.value, any=false; document.querySelectorAll('#addonsBox .opt[data-for]').forEach(function(l){ var show=l.getAttribute('data-for').split('|').indexOf(pkg)>=0; l.style.display=show?'':'none'; if(show){any=true;}else{var cb=l.querySelector('input');if(cb){cb.checked=false;}} }); var box=document.getElementById('addonsBox'); if(box){box.style.display=any?'':'none';} var cmp=document.getElementById('crmCompare'); if(cmp){cmp.style.display=(pkg==='Done-for-You CRM — $497')?'':'none';} updateTotal(); }
   form.addEventListener("change", updateTotal); form.package.addEventListener("change", updateAddons); updateAddons();
   document.querySelectorAll('a.btn[data-pkg]').forEach(function(a){ a.addEventListener("click",function(){ form.package.value=this.getAttribute("data-pkg"); updateAddons(); }); });
+  function setBilling(mode){
+    document.querySelectorAll('.billtoggle .bt').forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-bill')===mode); });
+    document.querySelectorAll('.card[data-plan]').forEach(function(c){
+      var m=c.getAttribute('data-m'), y=c.getAttribute('data-y');
+      var amt=c.querySelector('.amt'), note=c.querySelector('.price-note'), b=c.querySelector('a.btn[data-pkg]');
+      if(mode==='yearly'){ if(amt){amt.textContent=Number(y).toLocaleString();} if(note){note.innerHTML='per year · <b>2 months free</b>';} if(b){b.setAttribute('data-pkg', b.getAttribute('data-y-pkg'));} }
+      else { if(amt){amt.textContent=m;} if(note){note.textContent='per month';} if(b){b.setAttribute('data-pkg', b.getAttribute('data-m-pkg'));} }
+    });
+  }
+  document.querySelectorAll('.billtoggle .bt').forEach(function(b){ b.addEventListener('click', function(){ setBilling(this.getAttribute('data-bill')); }); });
   form.addEventListener("submit", async function(e){
     e.preventDefault(); btn.disabled=true; btn.textContent="Sending\u2026";
     const fd=new FormData(form);
